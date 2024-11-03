@@ -1,4 +1,4 @@
-# DSU Sideloader
+# DSU Sideloader (modded by @abc00012345)
 
 A simple app made to help users easily install GSIs via DSU's Android feature.
 <div>
