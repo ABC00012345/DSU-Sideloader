@@ -1,4 +1,5 @@
-# DSU Sideloader
+# DSU Sideloader (modded by @abc00012345)
+## In this mod not everything is translated in all languages of the app. The main language for this mod is English
 
 A simple app made to help users easily install GSIs via DSU's Android feature.
 <div>
