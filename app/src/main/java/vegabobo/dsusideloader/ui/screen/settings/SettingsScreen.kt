@@ -1,12 +1,20 @@
 package vegabobo.dsusideloader.ui.screen.settings
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.NewReleases
 import androidx.compose.material.icons.outlined.WarningAmber
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import vegabobo.dsusideloader.R
@@ -17,6 +25,7 @@ import vegabobo.dsusideloader.ui.components.PreferenceItem
 import vegabobo.dsusideloader.ui.components.Title
 import vegabobo.dsusideloader.ui.components.TopBar
 import vegabobo.dsusideloader.ui.screen.Destinations
+import vegabobo.dsusideloader.ui.screen.home.HomeLinks
 import vegabobo.dsusideloader.util.OperationMode
 import vegabobo.dsusideloader.util.collectAsStateWithLifecycle
 
@@ -27,6 +36,40 @@ fun Settings(
     settingsViewModel: SettingsViewModel = hiltViewModel(),
 ) {
     val uiState by settingsViewModel.uiState.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+
+    // added by @abc00012345
+    val showDialog = remember { mutableStateOf(false) }
+
+    if (showDialog.value) {
+        AlertDialog(
+            onDismissRequest = { showDialog.value = false }, // Close the dialog when clicked outside
+            confirmButton = {
+                Button(
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(HomeLinks.DSU_LEARN_MORE))
+                        context.startActivity(intent)
+                    },
+                ) {
+                    Text(stringResource(id = R.string.learn_more))
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(HomeLinks.DSU_DOCS))
+                        context.startActivity(intent)
+                    },
+                ) { Text(stringResource(id = R.string.view_docs)) }
+            },
+            title = {
+                Text(text = stringResource(id = R.string.what_is_dsu))
+            },
+            text = {
+                Text(text = stringResource(id = R.string.what_is_dsu_description))
+            },
+        )
+    }
 
     LaunchedEffect(Unit) {
         settingsViewModel.checkDevOpt()
@@ -102,6 +145,10 @@ fun Settings(
         }
 
         Title(title = stringResource(id = R.string.other))
+        PreferenceItem(
+            title = "What is DSU?",
+            onClick = { showDialog.value = true },
+        )
         PreferenceItem(
             title = stringResource(id = R.string.operation_mode),
             description = settingsViewModel.checkOperationMode(),

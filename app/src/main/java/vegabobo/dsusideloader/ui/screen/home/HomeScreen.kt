@@ -18,8 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import kotlin.system.exitProcess
 import kotlinx.coroutines.flow.collectLatest
 import vegabobo.dsusideloader.R
-import vegabobo.dsusideloader.ui.cards.DsuInfoCard
-import vegabobo.dsusideloader.ui.cards.ImageSizeCard
+import vegabobo.dsusideloader.ui.cards.ModdedByCard
 import vegabobo.dsusideloader.ui.cards.UserdataCard
 import vegabobo.dsusideloader.ui.cards.installation.InstallationCard
 import vegabobo.dsusideloader.ui.cards.warnings.GrantingPermissionCard
@@ -42,6 +41,7 @@ import vegabobo.dsusideloader.util.collectAsStateWithLifecycle
 object HomeLinks {
     const val DSU_LEARN_MORE = "https://developer.android.com/topic/dsu"
     const val DSU_DOCS = "https://source.android.com/devices/tech/ota/dynamic-system-updates"
+    const val MY_GITHUB = "https://github.com/abc00012345"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -131,15 +131,19 @@ fun Home(
                     onCheckedChange = { homeViewModel.onCheckUserdataCard() },
                     onValueChange = { homeViewModel.updateUserdataSize(it) },
                 )
-                ImageSizeCard(
+                /*ImageSizeCard(
                     isEnabled = uiState.isInstalling(),
                     uiState = uiState.imageSizeCard,
                     onCheckedChange = { homeViewModel.onCheckImageSizeCard() },
                     onValueChange = { homeViewModel.updateImageSize(it) },
-                )
-                DsuInfoCard(
+                )*/ // removed because not needed by @abc00012345
+                // is now on the settings page
+                /*DsuInfoCard(
                     onClickViewDocs = { uriHandler.openUri(HomeLinks.DSU_DOCS) },
                     onClickLearnMore = { uriHandler.openUri(HomeLinks.DSU_LEARN_MORE) },
+                )*/
+                ModdedByCard(
+                    onClickViewGithub = { uriHandler.openUri(HomeLinks.MY_GITHUB) },
                 )
             }
         },

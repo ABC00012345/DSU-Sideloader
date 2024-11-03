@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">DSU Sideloader</string>
+    <string name="app_name" translatable="false">DSU Sideloader MOD (@abc00012345)</string>
 
     <!--
         Home screen
@@ -14,7 +14,7 @@
     <string name="setup">Setup</string>
 
     <string name="storage_warning">Storage warning</string>
-    <string name="storage_warning_description">You have less than %1$s%% of free storage, installation process will fail, please free up some space.</string>
+    <string name="storage_warning_description">You have less than %1$s%% of free storage, installation process will fail on some devices, please free up some space.</string>
     <string name="continue_anyway">Continue anyway</string>
 
     <string name="missing_permission">Missing permission</string>
@@ -241,4 +241,11 @@
 
     <string name="close_app">Close app</string>
     <string name="close_app_question">Close app?</string>
+
+    <!--
+        Added by @abc00012345
+     -->
+
+    <string name="moddedby" translatable="false">DSU Sideloader modded by @abc00012345</string>
+    <string name="viewmygithub" translatable="false">My Github</string>
 </resources>

@@ -28,6 +28,7 @@ object AboutLinks {
     const val REPOSITORY_URL = "https://github.com/VegaBobo/DSU-Sideloader"
     const val WSTXDA_GITHUB = "https://github.com/WSTxda"
     const val VEGABOBO_GITHUB = "https://github.com/VegaBobo"
+    const val MY_GITHUB = "https://github.com/abc00012345"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -110,6 +111,11 @@ fun AboutScreen(
                 title = "VegaBobo",
                 description = stringResource(id = R.string.role_developer),
                 onClick = { uriHandler.openUri(AboutLinks.VEGABOBO_GITHUB) },
+            )
+            PreferenceItem(
+                title = "ABC00012345",
+                description = "Modded",
+                onClick = { uriHandler.openUri(AboutLinks.MY_GITHUB) },
             )
             PreferenceItem(
                 title = "WSTxda",

@@ -37,3 +37,27 @@ fun DsuInfoCard(
         }
     }
 }
+
+/*
+ added by @abc00012345
+*/
+@Composable
+fun ModdedByCard(
+    modifier: Modifier = Modifier,
+    onClickViewGithub: () -> Unit,
+) {
+    SimpleCard(
+        modifier = modifier,
+        text = stringResource(id = R.string.moddedby),
+        justifyText = true,
+        addPadding = true,
+    ) {
+        Row(modifier = Modifier.padding(top = 6.dp)) {
+            Spacer(modifier = Modifier.weight(1F))
+            SecondaryButton(
+                text = stringResource(id = R.string.viewmygithub),
+                onClick = onClickViewGithub,
+            )
+        }
+    }
+}
